@@ -27,6 +27,7 @@ public class menuMain {
 
 		case 1:
 			System.out.println("Cosa 1\n");
+			
 
 			break;
 		case 2:
