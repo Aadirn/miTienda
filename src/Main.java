@@ -2,6 +2,7 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.menusCrud.menuMain;
 import src.models.Categoria;
 import src.models.Clientes;
 import src.models.Producto;
@@ -33,10 +34,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		menuMain mM = new menuMain();
+		mM.display();
+		
+		System.out.println("SALIDA PROGRAMA");
+		
+		//NO SE COMO HACER PARA QUE SALGA DEL PROGRAMA DIRECTAMENTE
+		
 		// Hacer el Backup del día
 		//Backup.getInstance().doBackup();  
 		
-		 Categoria cat = new Categoria();
+		/* Categoria cat = new Categoria();
 		 cat.setNombre("Cat 01");
 		 //cat.save();
 		 List<DbObject> cats = cat.list();
@@ -70,7 +78,7 @@ public class Main {
 		 Clientes cli01 = (Clientes)new Clientes().getByid(1);
 		 System.out.println(cli01);
 		
-		
+		*/
 		//statemnt.executeQuery(sql);
 		
 		//con.prepareStatement(sql)
