@@ -2,7 +2,6 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.menusCrud.menuMain;
 import src.models.Categoria;
 import src.models.Clientes;
 import src.models.Producto;
@@ -33,55 +32,28 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
+		 
 		
-		menuMain mM = new menuMain();
-		mM.display();
-		
-		System.out.println("SALIDA PROGRAMA");
-		
-		//NO SE COMO HACER PARA QUE SALGA DEL PROGRAMA DIRECTAMENTE
-		
-		// Hacer el Backup del día
-		//Backup.getInstance().doBackup();  
-		
-		/* Categoria cat = new Categoria();
+		 Categoria cat = new Categoria();
 		 cat.setNombre("Cat 01");
-		 //cat.save();
+		 cat.save();	
+		 
 		 List<DbObject> cats = cat.list();
-		 for (DbObject item : cats) {
-			Categoria dbCat = (Categoria)item;
-			System.out.println(dbCat.toString());
-		}
+		 for (DbObject obj : cats) {
+			 Categoria item = (Categoria) obj;
+			 if (item.getId() == 1) {
+				 item.delete();	 
+			 }
+		 }
 		 
-		 Producto prod = new Producto();
-		 prod.setId_categoria(1); // TODO: Select de la categoria insertada
-		 prod.setNombre("PROD 01");
-		 prod.setPrecio(100);
-		 prod.setStock(1);
+		 cats.get(7).delete();
 		 
-		 prod.save();
+		 Categoria cat2 = new Categoria();
+		 cat2.delete();
 		 
-		 List<DbObject> productos = prod.list();
-		 for (DbObject dbObject : productos) {
-			Producto p = (Producto) dbObject;
-			//p.delete();
-			p.setPrecio(100);
-			p.save(); 
-		} 
-		 
-		 Clientes cli = new Clientes();
-		 cli.setNombre("Cliente");
-		 cli.setDni(""+Tools.getInstance().getRandomNumber());
-		 cli.save();
+		 cat2 = (Categoria) cat2.getByid(1);
 		 
 		 
-		 Clientes cli01 = (Clientes)new Clientes().getByid(1);
-		 System.out.println(cli01);
-		
-		*/
-		//statemnt.executeQuery(sql);
-		
-		//con.prepareStatement(sql)
 	 
 	}
 
