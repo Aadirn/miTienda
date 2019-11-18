@@ -1,12 +1,8 @@
 package src; 
-import java.util.ArrayList;
 import java.util.List;
 
 import src.models.Categoria;
-import src.models.Clientes;
-import src.models.Producto;
-import src.models.comun.DbObject;
-import src.models.comun.Tools; 
+import src.models.comun.DbObject; 
 
 public class Main {
 	
@@ -36,7 +32,7 @@ public class Main {
 		
 		 Categoria cat = new Categoria();
 		 cat.setNombre("Cat 01");
-		 cat.save();	
+		 cat.save();
 		 
 		 List<DbObject> cats = cat.list();
 		 for (DbObject obj : cats) {
