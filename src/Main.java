@@ -1,5 +1,12 @@
 package src; 
+<<<<<<< HEAD
 import src.menusCrud.menuMain; 
+=======
+import java.util.List;
+
+import src.models.Categoria;
+import src.models.comun.DbObject; 
+>>>>>>> branch 'master' of https://github.com/Aadirn/miTienda.git
 
 public class Main {
 	
@@ -25,7 +32,9 @@ public class Main {
 	 */
 
 	public static void main(String[] args) {
+		 
 		
+<<<<<<< HEAD
 		
 		menuMain.getInstance().display();
 		
@@ -35,6 +44,9 @@ public class Main {
 		 
 		
 		 /*Categoria cat = new Categoria();
+=======
+		 Categoria cat = new Categoria();
+>>>>>>> branch 'master' of https://github.com/Aadirn/miTienda.git
 		 cat.setNombre("Cat 01");
 		 cat.save();
 		 
@@ -51,7 +63,11 @@ public class Main {
 		 Categoria cat2 = new Categoria();
 		 cat2.delete();
 		 
+<<<<<<< HEAD
 		 cat2 = (Categoria) cat2.getByid(1);*/
+=======
+		 cat2 = (Categoria) cat2.getByid(1);
+>>>>>>> branch 'master' of https://github.com/Aadirn/miTienda.git
 		 
 		 
 	 
