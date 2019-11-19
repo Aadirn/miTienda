@@ -4,12 +4,19 @@ import java.util.Scanner;
 
 public class menuMain {
 
-	private boolean salir;
 	private int opcion;
 	private Scanner keyboard;
+	
+	private static menuMain instance;
 
-	public menuMain() {
+	private menuMain() {
+	}
 
+	public static menuMain getInstance() {
+		if (instance == null) {
+			instance = new menuMain();
+		}
+		return instance;
 	}
 
 	public void display() {
@@ -21,33 +28,28 @@ public class menuMain {
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
 			opcion = Integer.parseInt(keyboard.nextLine());
-			salir = false;
 			switch (opcion) {
 
 			case 1:
-				menuProducto mP = new menuProducto();
-				mP.display();
+				menuProducto.getInstance().display();
 				break;
 			case 2:
-				menuClientes mC = new menuClientes();
-				mC.display();
+				menuClientes.getInstance().display();
 				break;
 			case 3:
-				menuCategoria mCat = new menuCategoria();
-				mCat.display();
+				menuCategoria.getInstance().display();
 				break;
 			case 4:
-				menuFacturas mF = new menuFacturas();
-				mF.display();
+				menuFacturas.getInstance().display();
 				break;
 			case 5:
-				System.out.println("SALIR\n");
-
-				salir = true;
+				System.out.println("Has seleccionado salir. Chaito\n");
+				
+				System.exit(0);
 				break;
 			default:
 				System.out.println("ACCION NO VALIDA!\n");
 			}
-		} while (!salir);
+		} while (true);
 	}
 }

@@ -7,9 +7,17 @@ public class menuFacturas {
 	private boolean salir;
 	private int opcion;
 	private Scanner keyboard;
+	
+	private static menuFacturas instance;
 
-	public menuFacturas() {
+	private menuFacturas() {
+	}
 
+	public static menuFacturas getInstance() {
+		if (instance == null) {
+			instance = new menuFacturas();
+		}
+		return instance;
 	}
 
 	public void display() {
@@ -38,8 +46,7 @@ public class menuFacturas {
 				break;
 			case 5:
 				System.out.println("Atras\n");// salirApp();
-				menuMain mM = new menuMain();
-				mM.display();
+				menuMain.getInstance().display();;
 				break;
 			default:
 				System.out.println("ACCION NO VALIDA!\n");

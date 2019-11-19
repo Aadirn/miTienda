@@ -8,8 +8,16 @@ public class menuCategoria {
 	private int opcion;
 	private Scanner keyboard;
 
-	public menuCategoria() {
+	private static menuCategoria instance;
 
+	private menuCategoria() {
+	}
+
+	public static menuCategoria getInstance() {
+		if (instance == null) {
+			instance = new menuCategoria();
+		}
+		return instance;
 	}
 
 	public void display() {
@@ -38,8 +46,7 @@ public class menuCategoria {
 				break;
 			case 5:
 				System.out.println("Atras\n");// salirApp();
-				menuMain mM = new menuMain();
-				mM.display();
+				menuMain.getInstance().display();
 				break;
 			default:
 				System.out.println("ACCION NO VALIDA!\n");
