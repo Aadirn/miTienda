@@ -4,10 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="src" path=""/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Sqlite"/>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/miTienda/drivers/mysql-connector-java-5.1.48.jar"/>
-=======
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/miTienda"/>
->>>>>>> branch 'master' of https://github.com/Aadirn/miTienda.git
 	<classpathentry kind="output" path=""/>
 </classpath>
