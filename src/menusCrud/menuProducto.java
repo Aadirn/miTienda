@@ -15,7 +15,7 @@ public class menuProducto {
 
 	private static menuProducto instance;
 	private List<DbObject> productos = new ArrayList<DbObject>();
-	private Producto prod;
+	private Producto prod = new Producto();
 
 	private menuProducto() {
 	}
@@ -64,18 +64,15 @@ public class menuProducto {
 	}
 
 	private void listProd() {
-		prod = new Producto();
-
+		
 		productos = prod.list();
 
 		for (int i = 0; i < productos.size(); i++) {
-			System.out.println(i+".-"+productos.get(i) + "\n");
+			System.out.println(productos.get(i).getId()+".-"+productos.get(i) + "\n");
 		}
 	}
 
 	private void createProd() {// TODO: COMPROBACIONES DE TODO
-		prod = new Producto();
-		Categoria cat = new Categoria();
 		System.out.println("Introduzca nombre de Producto\n");
 		prod.setNombre(keyboard.nextLine());
 		keyboard.reset();
@@ -85,21 +82,24 @@ public class menuProducto {
 		System.out.println("Introduzca stock de Producto\n");
 		prod.setStock(Integer.parseInt(keyboard.nextLine()));
 		keyboard.reset();
-		//System.out.println("Introduzca ID de Producto\n");
-		prod.setId_categoria(cat.getId());
+		System.out.println("Seleccione a que categoria pertenece el producto");
+		prod.setId_categoria(menuController.getInstance().elegirObj(new Categoria()).getId());
 		
 		prod.save();
 
 	}
 	
 	private void deleteProd() {
-		
 		listProd();
-		
 		System.out.println("Seleccione que producto quiere borrar\n");
 		opcion=Integer.parseInt(keyboard.nextLine());
 		productos.get(opcion).delete();
-		
+	}
+	
+	private void actualizarProd() {
+		System.out.println("Seleccione el producto que quiera actualizar\n");
+		listProd();
+		opcion=Integer.parseInt(keyboard.nextLine());
 		
 	}
 
