@@ -39,13 +39,13 @@ public class menuClientes {
 				System.out.println("Leer\n");
 				break;
 			case 3:
-				System.out.println("Actualizar\n");// categorias();
+				System.out.println("Actualizar\n");
 				break;
 			case 4:
-				System.out.println("Borrar\n");// facturas();
+				System.out.println("Borrar\n");
 				break;
 			case 5:
-				System.out.println("Atras\n");// salirApp();
+				System.out.println("Atras\n");
 				menuMain.getInstance().display();
 				break;
 			default:

@@ -5,7 +5,7 @@ import java.util.Random;
 public class Tools {
 
 	private Random rnd;
-	private static Tools instance;  
+	private static Tools instance;
 
 	private Tools() {
 		rnd = new Random();
@@ -17,12 +17,22 @@ public class Tools {
 		}
 		return instance;
 	}
-	
-	public Integer getRandomNumber() { 
-	    
-	    int number = this.rnd.nextInt(999999); 
-	    String num = String.format("%06d", number);
-	    
-	    return Integer.valueOf(num);
+
+	public Integer getRandomNumber() {
+
+		int number = this.rnd.nextInt(999999);
+		String num = String.format("%06d", number);
+
+		return Integer.valueOf(num);
+	}
+
+	public boolean isNumeric(String txt) {
+		try {
+			Integer.valueOf(txt);
+		} catch (Exception ex) {
+			return false;
+		}
+
+		return true;
 	}
 }

@@ -1,5 +1,6 @@
 package src; 
-import src.menusCrud.menuMain; 
+import src.menusCrud.menuMain;
+import src.models.Categoria; 
 
 public class Main {
 	
@@ -29,8 +30,8 @@ public class Main {
 	
 		menuMain.getInstance().display();
 		
-		/*Producto prod = new Producto();
-		 prod.setNombre("Prod 01");
+		/*Categoria prod = new Categoria();
+		 prod.setNombre("Cat 02");
 		 prod.save();*/
 		 
 		
