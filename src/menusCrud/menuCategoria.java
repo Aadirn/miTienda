@@ -102,7 +102,8 @@ public class menuCategoria {
 		 */
 		sel = Integer.valueOf(opcion);
 		// prod.getByid(sel).delete();
-		categorias.get(sel).delete();
+		cat = (Categoria) cat.getByid(sel);
+		cat.delete();
 	}
 
 	private void actualizarCat() {

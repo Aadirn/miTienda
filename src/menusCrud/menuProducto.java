@@ -109,7 +109,8 @@ public class menuProducto {
 		}*/
 		sel=Integer.valueOf(opcion);
 		//prod.getByid(sel).delete();
-		productos.get(sel).delete();
+		prod=(Producto)prod.getByid(sel);
+		prod.delete();
 	}
 
 	private void actualizarProd() {

@@ -99,7 +99,7 @@ public class menuFacturas {
 
 	private void deleteFact() {
 		listFact();
-		System.out.println("Seleccione que cliente quiere borrar\n");
+		System.out.println("Seleccione que factura quiere borrar\n");
 		opcion = keyboard.nextLine();
 		/*
 		 * if(!Tools.getInstance().isNumeric(opcion)||Integer.valueOf(opcion)<0||Integer
@@ -108,11 +108,13 @@ public class menuFacturas {
 		 */
 		sel = Integer.valueOf(opcion);
 		// prod.getByid(sel).delete();
-		facturas.get(sel).delete();
+
+		fact = (Factura) fact.getByid(sel);
+		fact.delete();
 	}
 
 	private void actualizarFact() {
-		System.out.println("Seleccione el cliente que quiera actualizar\n");
+		System.out.println("Seleccione la factura que quiera actualizar\n");
 		listFact();
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);

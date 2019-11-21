@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import src.models.Factura;
 import src.models.FacturaLinea;
 import src.models.comun.DbObject;
 import src.models.comun.Tools;
@@ -84,7 +85,7 @@ public class menuFacturaLinea {
 
 	private void createFactLin() {// TODO: COMPROBACIONES DE TODO
 		System.out.println("Selecciona el ID de la factura a la que pertenece\n");
-		factLin.setId_factura(menuController.getInstance().elegirObj(new FacturaLinea()).getId());
+		factLin.setId_factura(menuController.getInstance().elegirObj(new Factura()).getId());
 		System.out.println("Escriba el nombre de esta factura linea");
 		factLin.setNombre(keyboard.nextLine());
 		keyboard.reset();
@@ -107,7 +108,9 @@ public class menuFacturaLinea {
 		 */
 		sel = Integer.valueOf(opcion);
 		// prod.getByid(sel).delete();
-		facturasLin.get(sel).delete();
+
+		factLin = (FacturaLinea) factLin.getByid(sel);
+		factLin.delete();
 	}
 
 	private void actualizarFactLin() {

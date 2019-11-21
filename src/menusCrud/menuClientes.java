@@ -114,7 +114,8 @@ public class menuClientes {
 		 */
 		sel = Integer.valueOf(opcion);
 		// prod.getByid(sel).delete();
-		clientes.get(sel).delete();
+		cli=(Clientes)cli.getByid(sel);
+		cli.delete();
 	}
 
 	private void actualizarClients() {
