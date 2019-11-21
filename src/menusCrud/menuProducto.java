@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.tools.Tool;
-
 import src.models.Categoria;
 import src.models.Producto;
 import src.models.comun.DbObject;
@@ -105,26 +103,29 @@ public class menuProducto {
 		listProd();
 		System.out.println("Seleccione que producto quiere borrar\n");
 		opcion = keyboard.nextLine();
-		if(!Tools.getInstance().isNumeric(opcion)||Integer.valueOf(opcion)<0||Integer.valueOf(opcion)>=productos.get(productos.size()-1).getId()) {
+		/*if(!Tools.getInstance().isNumeric(opcion)||Integer.valueOf(opcion)<0||Integer.valueOf(opcion)>=productos.get(productos.size()-1).getId()) {
 			System.out.println("No existe ningun Producto con esa ID\n");
 			deleteProd();
-		}
+		}*/
 		sel=Integer.valueOf(opcion);
-		prod.getByid(sel).delete();
+		//prod.getByid(sel).delete();
+		productos.get(sel).delete();
 	}
 
 	private void actualizarProd() {
 		System.out.println("Seleccione el producto que quiera actualizar\n");
 		listProd();
-		opcion = Integer.parseInt(keyboard.nextLine());
-		prod = (Producto) prod.getByid(opcion);
+		opcion = keyboard.nextLine();
+		sel=Integer.valueOf(opcion);
+		prod = (Producto) prod.getByid(sel);
 		String teclado;
 		do {
 			System.out.println("¿Que quieres cambiar?");
 			System.out.println("1.-Nombre\n2.-Precio\n3.-Stock\n4.-ID Categoria\n5.-Guardar Cambios\n6.-Atrás\n");
 			keyboard.reset();
-			opcion = Integer.parseInt(keyboard.nextLine());
-			switch (opcion) {
+			opcion = keyboard.nextLine();
+			sel=Integer.valueOf(opcion);
+			switch (sel) {
 			case 1:
 				System.out.println("Escriba el nuevo nombre: \n");
 				teclado = keyboard.nextLine();

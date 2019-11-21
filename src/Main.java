@@ -1,6 +1,5 @@
 package src; 
-import src.menusCrud.menuMain;
-import src.models.Categoria; 
+import src.menusCrud.menuMain; 
 
 public class Main {
 	

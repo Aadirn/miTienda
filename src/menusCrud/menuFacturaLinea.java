@@ -4,39 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import src.models.Clientes;
-import src.models.Factura;
+import src.models.FacturaLinea;
 import src.models.comun.DbObject;
 import src.models.comun.Tools;
 
-public class menuFacturas {
+public class menuFacturaLinea {
 
 	private String opcion;
 	private Scanner keyboard;
 	private int sel;
 
-	private List<DbObject> facturas = new ArrayList<DbObject>();
-	private Factura fact = new Factura();
-	
-	private static menuFacturas instance;
+	private List<DbObject> facturasLin = new ArrayList<DbObject>();
+	private FacturaLinea factLin = new FacturaLinea();
 
-	private menuFacturas() {
+	private static menuFacturaLinea instance;
+
+	private menuFacturaLinea() {
 	}
 
-	public static menuFacturas getInstance() {
+	public static menuFacturaLinea getInstance() {
 		if (instance == null) {
-			instance = new menuFacturas();
+			instance = new menuFacturaLinea();
 		}
 		return instance;
 	}
 
 	public void display() {
 
-		facturas = fact.list();
+		facturasLin = factLin.list();
 
 		keyboard = new Scanner(System.in);
 		do {
-			System.out.println("~~~~~~~~~~MENÚ FACTURAS~~~~~~~~~\n");
+			System.out.println("~~~~~~~~~~MENÚ FACTURA LINEA~~~~~~~~~\n");
 			System.out.println("1.-Crear\n2.-Leer\n3.-Actualizar\n4.-Borrar\n5.-Atrás\n");
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
@@ -49,19 +48,19 @@ public class menuFacturas {
 
 				case 1:
 					System.out.println("Crear\n");
-					createFact();
+					createFactLin();
 					break;
 				case 2:
 					System.out.println("Leer\n");
-					listFact();
+					listFactLin();
 					break;
 				case 3:
 					System.out.println("Actualizar\n");
-					actualizarFact();
+					actualizarFactLin();
 					break;
 				case 4:
 					System.out.println("Borrar\n");
-					deleteFact();
+					deleteFactLin();
 					break;
 				case 5:
 					System.out.println("Atras\n");
@@ -74,31 +73,31 @@ public class menuFacturas {
 		} while (true);
 	}
 
-	private void listFact() {
+	private void listFactLin() {
 
-		facturas = fact.list();
+		facturasLin = factLin.list();
 
-		for (int i = 0; i < facturas.size(); i++) {
-			System.out.println(facturas.get(i).getId() + ".-" + facturas.get(i) + "\n");
+		for (int i = 0; i < facturasLin.size(); i++) {
+			System.out.println(facturasLin.get(i).getId() + ".-" + facturasLin.get(i) + "\n");
 		}
 	}
 
-	private void createFact() {// TODO: COMPROBACIONES DE TODO
-		System.out.println("Seleccione ID del cliente al que pertenece esta factura\n");
-		fact.setId_cliente(menuController.getInstance().elegirObj(new Clientes()).getId());
+	private void createFactLin() {// TODO: COMPROBACIONES DE TODO
+		System.out.println("Selecciona el ID de la factura a la que pertenece\n");
+		factLin.setId_factura(menuController.getInstance().elegirObj(new FacturaLinea()).getId());
+		System.out.println("Escriba el nombre de esta factura linea");
+		factLin.setNombre(keyboard.nextLine());
 		keyboard.reset();
-		System.out.println("Introduzca la serie de esta factura\n");
-		fact.setSerie(Integer.parseInt(keyboard.nextLine()));
+		System.out.println("Escriba el precio de esta factura linea");
+		factLin.setPrecio(Integer.valueOf(keyboard.nextLine()));
 		keyboard.reset();
-		//Problema con la fecha en sql, asi que...
-		fact.setFecha(null);
 
-		fact.save();
+		factLin.save();
 
 	}
 
-	private void deleteFact() {
-		listFact();
+	private void deleteFactLin() {
+		listFactLin();
 		System.out.println("Seleccione que cliente quiere borrar\n");
 		opcion = keyboard.nextLine();
 		/*
@@ -108,45 +107,48 @@ public class menuFacturas {
 		 */
 		sel = Integer.valueOf(opcion);
 		// prod.getByid(sel).delete();
-		facturas.get(sel).delete();
+		facturasLin.get(sel).delete();
 	}
 
-	private void actualizarFact() {
+	private void actualizarFactLin() {
 		System.out.println("Seleccione el cliente que quiera actualizar\n");
-		listFact();
+		listFactLin();
 		opcion = keyboard.nextLine();
 		sel = Integer.valueOf(opcion);
-		fact = (Factura) fact.getByid(sel);
+		factLin = (FacturaLinea) factLin.getByid(sel);
 		do {
 			System.out.println("¿Que quieres cambiar?");
-			System.out.println(
-					"1.-ID Cliente\n2.-Fecha (No implementado)\n3.-Serie\n4.-Guardar Cambios\n5.-Atrás\n");
+			System.out.println("1.-ID\n2.-Nombre\n3.-Precio\n4.-Guardar Cambios\n5.-Atrás\n");
 			keyboard.reset();
 			opcion = keyboard.nextLine();
 			sel = Integer.valueOf(opcion);
 			switch (sel) {
 			case 1:
-				System.out.println("Seleccione el nuevo cliente: \n");
-				fact.setId_cliente(menuController.getInstance().elegirObj(new Clientes()).getId());
-				keyboard.reset();
+				System.out.println("Seleccione el nuevo ID al que pertenece: \n");
+				factLin.setId_factura(menuController.getInstance().elegirObj(new FacturaLinea()).getId());
 				break;
 			case 2:
-				System.out.println("Escriba la nueva fecha: (No Implementado) \n");
+				System.out.println("Escriba el nuevo nombre: \n");
+				opcion = keyboard.nextLine();
+				factLin.setNombre(opcion);
+				;
+				keyboard.reset();
+
 				break;
 			case 3:
-				System.out.println("Escriba la nueva serie: \n");
+				System.out.println("Escriba el nuevo precio: \n");
 				opcion = keyboard.nextLine();
-				fact.setSerie(Integer.valueOf(opcion));
+				factLin.setPrecio(Integer.valueOf(opcion));
 				keyboard.reset();
 
 				break;
 			case 4:
 				System.out.println("Guardando...\n");
-				fact.save();
+				factLin.save();
 				break;
 			case 5:
-				System.out.println("Volviendo a Menú Facturas\n");
-				menuFacturas.getInstance().display();
+				System.out.println("Volviendo a Menú Factura Linea\n");
+				menuFacturaLinea.getInstance().display();
 				break;
 			default:
 				break;

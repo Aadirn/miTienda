@@ -24,7 +24,7 @@ public class menuMain {
 		keyboard = new Scanner(System.in);
 		do {
 			System.out.println("~~~~~~~~~~MENÚ~~~~~~~~~\n");
-			System.out.println("1.-Productos\n2.-Clientes\n3.-Categorias\n4.-Facturas\n5.-Salir\n");
+			System.out.println("1.-Productos\n2.-Clientes\n3.-Categorias\n4.-Facturas\n5.-Facturas Linea\n6.-Salir\\n");
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
 			opcion = Integer.parseInt(keyboard.nextLine());
@@ -43,6 +43,9 @@ public class menuMain {
 				menuFacturas.getInstance().display();
 				break;
 			case 5:
+				
+				break;
+			case 6:
 				System.out.println("Has seleccionado salir. Chaito\n");
 				
 				System.exit(0);
